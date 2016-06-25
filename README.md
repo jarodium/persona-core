@@ -4,6 +4,7 @@
 Main Goals
 
    1. Setup Software
+
        1.1 - Hardware Software
           1.1.1 - Smartcard reader ( TODO )
               1.1.1.1 - Test Tools
