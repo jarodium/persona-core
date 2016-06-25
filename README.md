@@ -6,10 +6,15 @@ Main Goals
    1. Setup Software
 
        1.1 - Hardware Software
+
           1.1.1 - Smartcard reader ( TODO )
+
               1.1.1.1 - Test Tools
+
               1.1.1.2 - Interfacing with Card
+
           1.1.2 - Embedded Smartcard Readers research
+
        1.2 - RethinkDB
 
           1.2.1 - Setup Authorization Tables
