@@ -22,9 +22,9 @@ Main Goals
           1.2.3 - Setup Family Tables
 
    2. Setup Family Members through EID Cards
-   3. Daily key generation & propagation
+   3. Daily key generation & propagation ( move this task to SecPack )
 
-       2.1 - Handle propagation to Dummy Core, SecPack and Device Hub
+       2.1 - Handle propagation to Dummy Core, Core and Device Hubs ( move this task to SecPack )
    4. Adding a Device
 
        3.1 - Device file generation tool
