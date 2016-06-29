@@ -18,8 +18,7 @@ Main Goals
        1.2 - RethinkDB
 
           1.2.1 - Setup Authorization Tables
-          1.2.2 - Setup House devices Tables
-          1.2.3 - Setup Family Tables
+          1.2.2 - Setup Family Member Tables
 
    2. Setup Family Members through EID Cards
    3. Daily key generation & propagation ( move this task to SecPack )
