@@ -1,0 +1,20 @@
+{
+    "hosts": {
+        "secpack": {
+            "host": "sp1.localdomain.local"
+        },
+        "dcore": {
+            "host": "dc1.localdomain.local"
+        },
+        "dhubs": [{
+            "name": "Master Bedroom",
+            "host": "mr1.localdomain.local",
+            "devices": []
+        }, {
+            "name": "Kitchen",
+            "host": "kt1.localdomain.local",
+            "devices": []
+        }]
+    }
+}
+p
