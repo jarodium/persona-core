@@ -1,0 +1,123 @@
+{
+    "human": {
+        "text_name": "",
+        "text_eid": "",
+        "date_birth": "",
+        "obj_citizen": {
+            "file_birth_certificate": {
+                "mime": "",
+                "base64": "",
+                "stored_at": ""
+            },
+            "nr_idcard": "",
+            "nr_vat": "",
+            "nr_ssn": "",
+            "nr_hcs": "",
+            "text_current_address": ""
+        },
+        "obj_bio_traits": {
+            "obj_dna": {
+                "file_sequenced_dna": {
+                    "mime": "",
+                    "base64": "",
+                    "stored_at": ""
+                }
+            },
+            "obj_blood": {
+                "text_type": "",
+                "text_donorship_status": ""
+            }
+        },
+        "obj_physical_traits": {
+            "text_race": "",
+            "text_race_genus": "",
+            "nr_weight": "",
+            "nr_height": "",
+            "text_gender": "",
+            "obj_body_features": {
+                "group_birth_marks": {
+                    "obj_mark": [{
+                        "text_mark": "",
+                        "text_location": ""
+                    }]
+                },
+                "group_injuries": [{
+                    "obj_injury": {
+                        "date_sustained": "",
+                        "text_severity": "",
+                        "text_description": ""
+                    }
+                }],
+                "group_scars": {
+                    "obj_scar": [{
+                        "text_scar": "",
+                        "text_location": ""
+                    }, {
+                        "text_scar": "",
+                        "text_location": ""
+                    }]
+                },
+                "obj_head": {
+                    "obj_face": {
+                        "text_type": ""
+                    },
+                    "obj_ears": {
+                        "text_type": ""
+                    },
+                    "obj_teeh": {
+                        "nr_current_number": "",
+                        "nr_wisdom": "",
+                        "nr_primary": "",
+                        "group_files": [{
+                            "obj_file": {
+                                "description": "",
+                                "mime": "",
+                                "base64": "",
+                                "stored_at": ""
+                            }
+                        }]
+                    },
+                    "obj_lips": {
+                        "text_type": ""
+                    },
+                    "obj_beard": {
+                        "text_style":
+                    },
+                    "obj_hair": {
+                        "text_style":
+                    },
+                    "group_eyes": [{
+                        "obj_eye_left": {
+                            "text_color_iris": "",
+                            "degree_fov": ""
+                        },
+                        "obj_eye_right": {
+                            "text_color_iris": "",
+                            "degree_fov": ""
+                        }
+                    }]
+                },
+                "obj_trunk": {
+                    "obj_heart": {
+
+                    },
+                    "obj_lungs": {
+
+                    },
+                    "obj_digestive_tube": {
+
+                    },
+                    "obj_liver": {
+
+                    }
+                },
+                "obj_legs": {
+
+                },
+                "obj_feet": {
+
+                }
+            }
+        }
+    }
+}
