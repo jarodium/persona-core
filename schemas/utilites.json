@@ -12,7 +12,9 @@
                 "money_charge_day" : "0.2040",
                 "money_charge_kwh" : "0.1660"
             }
-        }
+        },
+        "nr_current_count" : "",
+        "money_current_due" : ""
     },
     "gas" : {
         "text_name" : "EDP",
@@ -26,7 +28,9 @@
                 "money_charge_day" : "0.2040",
                 "money_charge_kwh" : "0.1660"
             }
-        }
+        },
+        "nr_current_count" : "",
+        "money_current_due" : ""
     },
     "water" : {
         "text_name" : "EDP",
@@ -39,6 +43,8 @@
                 "nr_grade" : "1-5",
                 "money_charge_day" : "0.5108"
             }
-        }
+        },
+        "nr_current_count" : "",
+        "money_current_due" : ""
     }
 }
