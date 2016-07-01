@@ -1,0 +1,44 @@
+{
+"utilities" : {
+    "electrical" : {
+        "text_name" : "EDP",
+        "text_server" : "server.edp.pt",
+        "obj_contract" : {
+            "text_contract_id" : "ABF1023",
+            "date_start_of_contract" : "",
+            "data_end_of_contract" : "null",
+            "obj_power_charges" : {
+                "nr_potency" : "3.45",
+                "money_charge_day" : "0.2040",
+                "money_charge_kwh" : "0.1660"
+            }
+        }
+    },
+    "gas" : {
+        "text_name" : "EDP",
+        "text_server" : "server.edp.pt",
+        "obj_contract" : {
+            "text_contract_id" : "ABF1023",
+            "date_start_of_contract" : "",
+            "data_end_of_contract" : "null",
+            "obj_power_charges" : {
+                "nr_grade" : "1-200",
+                "money_charge_day" : "0.2040",
+                "money_charge_kwh" : "0.1660"
+            }
+        }
+    },
+    "water" : {
+        "text_name" : "EDP",
+        "text_server" : "server.edp.pt",
+        "obj_contract" : {
+            "text_contract_id" : "ABF1023",
+            "date_start_of_contract" : "",
+            "data_end_of_contract" : "null",
+            "obj_power_charges" : {
+                "nr_grade" : "1-5",
+                "money_charge_day" : "0.5108"
+            }
+        }
+    }
+}

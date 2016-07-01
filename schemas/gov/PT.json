@@ -1,6 +1,6 @@
 {
     "country" : {
-        "authorized_servers" : {
+        "authorized_gov_servers" : {
             "health" : {
                 "health.example.gov.pt"
             },
