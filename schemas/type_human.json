@@ -13,6 +13,7 @@
             "nr_vat": "",
             "nr_ssn": "",
             "nr_hcs": "",
+            "nr_voter": "",
             "text_current_address": ""
         },
         "obj_bio_traits": {
@@ -118,6 +119,20 @@
 
                 }
             }
+        },
+        "obj_psych_traits": {
+            "group_personality": [{
+                "obj_personality": {
+                    "text_name": "",
+                    "text_description": ""
+                }
+            }],
+            "group_mental_ilnesses": [{
+                "obj_mental_ilness": {
+                    "text_name": "",
+                    "text_description": ""
+                }
+            }]
         }
     }
 }
