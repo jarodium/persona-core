@@ -1,0 +1,12 @@
+{
+    "country" : {
+        "authorized_servers" : {
+            "health" : {
+                "health.example.gov.pt"
+            },
+            "finances" : {
+                "finance.example.gov.pt"
+            }
+        }
+    }
+}
