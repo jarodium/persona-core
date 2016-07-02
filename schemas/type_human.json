@@ -118,6 +118,9 @@
                 "obj_feet": {
 
                 }
+            },
+            "obj_body_measurements": {
+
             }
         },
         "obj_psych_traits": {
