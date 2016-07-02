@@ -120,7 +120,17 @@
                 }
             },
             "obj_body_measurements": {
-
+                "nr_head_girth": "",
+                "nr_neck_girth": "",
+                "nr_chest_girth": "",
+                "nr_bust_girth": "",
+                "nr_underbust_girth": "",
+                "nr_waist_girth": "",
+                "nr_hip_girth": "",
+                "nr_leg_inside_length": "",
+                "nr_arm_length": "",
+                "nr_hand_girth": "",
+                "nr_foot_length": ""
             }
         },
         "obj_psych_traits": {
