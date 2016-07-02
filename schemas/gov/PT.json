@@ -1,12 +1,14 @@
 {
-    "country" : {
-        "authorized_gov_servers" : {
-            "health" : {
-                "health.example.gov.pt"
-            },
-            "finances" : {
-                "finance.example.gov.pt"
-            }
+    "country": {
+        "authorized_gov_servers": {
+            "group_health": [{
+                "text_name": "Health Ministry Server",
+                "text_server": "health.example.gov.pt"
+            }],
+            "group_finances": [{
+                "text_name": "Autoridade Tributária e Aduaneira",
+                "text_server": "finance.example.gov.pt"
+            }]
         }
     }
 }
