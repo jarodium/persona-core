@@ -5,7 +5,10 @@
 #persona - corepersona
 
 #preparing automated networking setup
-hostame cr1.localdomain.local
+hostame cr1.localdomain.local #does not work in debian... hell why? must see docs
+
+#installing git
+apt-get install git-core
 
 
 #preparing rethinkdb for install
