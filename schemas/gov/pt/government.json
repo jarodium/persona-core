@@ -1,0 +1,17 @@
+{
+    "country": {
+        "name" : "Portugal",
+        "authorized_gov_servers": {
+            "group_health": [{
+                "text_name": "Health Ministry Server",
+                "text_server": "health.example.gov.pt",
+                "text_secure_key": ""
+            }],
+            "group_finance": [{
+                "text_name": "Autoridade Tributária e Aduaneira",
+                "text_server": "finance.example.gov.pt",
+                "text_secure_key": ""
+            }]
+        }
+    }
+}

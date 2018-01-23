@@ -7,18 +7,8 @@ Main Goals
 
        1.1 - Hardware Software
 
-          1.1.1 - Smartcard reader ( TODO )
-
-              1.1.1.1 - Test Tools
-
-              1.1.1.2 - Interfacing with Card
-
-          1.1.2 - Embedded Smartcard Readers research
-
-       1.2 - RethinkDB
-
-          1.2.1 - Setup Authorization Tables
-          1.2.2 - Setup Family Member Tables
+          1.1.1 - Smartcard reader ( In progress )
+              1.1.1.1 - Interfacing with Card
 
    2. Setup Family Members through EID Cards
    3. Daily key generation & propagation ( move this task to SecPack )

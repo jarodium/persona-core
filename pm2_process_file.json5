@@ -1,0 +1,11 @@
+{
+  apps: [{
+    name: 'privacy_service',
+    script: './privacy_service.js',
+    watch: true
+  }, {
+    name: 'eid_service',
+    script: './ediy_service.js',
+    watch: true
+  }]
+}

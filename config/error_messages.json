@@ -1,0 +1,10 @@
+[{
+  "services" : [{
+    "privacy" : {
+      "FAULT_PRIV_VIOL" : "Description of the error here"
+    },
+    "eid" : {
+      "EID_ERR_CHECK_DIGIT" : "Description of the error here"
+    }
+  }]
+}]

@@ -1,0 +1,15 @@
+[{
+  "policies" : {
+    "eids" : [{
+      "national-nr" : "ABC",
+      "first-name" : 0,
+      "last-name" : 1,
+      "address" : 1
+    },{
+      "national-nr" : "CDE",
+      "first-name" : 0,
+      "last-name" : 1,
+      "address" : 1
+    }]
+  }
+}]
