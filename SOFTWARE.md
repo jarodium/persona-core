@@ -1,5 +1,6 @@
 # Software List for Core
 
-1. NodeJS
+1. Node Requirements
 
-    1.1 - ??
+    - node-pcsclite
+    - shelljs
