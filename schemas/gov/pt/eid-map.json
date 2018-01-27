@@ -1,11 +1,32 @@
 {
     "description" : "Portuguese eID field mapper",
+    "CITIZEN_IDENTIF" : {                
+	    "typeDocument" : "120,154",
+	    "serialDocumentNumber" : "154,182",
+        "dateIssued" : "230,250",
+        "dateExpires" : "310,330",	    	    
+	    "nameSurname" : "330,450",
+	    "nameName" : "450,570",
+	    "typeGender" : "570,572",
+	    "nameNacionality" : "572,578",
+	    "dateBirth" : "578,598",
+	    "floatHeight" : "598,606",
+	    "numberIdNumber" : "606,624",
+	    "nameSurnameMother" : "624,744",
+	    "nameGivenNameMother" : "744,864",
+	    "nameSurnameFather" : "864,984",
+	    "nameGivenNameFather" : "984,1104",
+	    "numberTax" : "1104,1122",
+	    "numberSocialSecurity" : "1122,1144",
+	    "numberHealth" : "1144,1162",
+	    "notes" : "1162,1282"
+    },
     "CITIZEN_ADDRESS" : {
         "typeEID" : "0,2",    
         "codCountry" : "2,6",
         "codDistrict" : "6,10",
         "codMunicipality" : "110,118",
-        "codParish" : "218,330", 
+        "codParish" : "218,230", 
         "nameDistrict" : "10,110",
         "nameMunicipality" : "118,218",    
         "nameParish" : "230,330",  
@@ -21,6 +42,6 @@
         "codPost1" : "1070,1078",
         "codPost2" : "1078,1084",
         "namePost" : "1084,1134",    
-        "dateYYYY_MM" : "1134,1146"    
+        "dateYM" : "1134,1146"    
     }
 }

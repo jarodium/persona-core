@@ -39,9 +39,9 @@ function getReader() {
     return reader;
 }
 
-function readAddress() {
+function readAddress(pin) {
     return new Promise(function(resolve, reject) {
-        shell.exec('pkcs15-tool --read-data-object \'Citizen Address Data\' --pin 0000  --output /dev/shm/cc_address.hex', function(code, stdout, stderr) {            
+        shell.exec('pkcs15-tool --read-data-object \'Citizen Address Data\' --pin '+pin+'  --output /dev/shm/cc_address.hex', function(code, stdout, stderr) {            
             fs.readFile('/dev/shm/cc_address.hex', function (err, data) {
                 if (err) reject(err);                
                 resolve(CORE.CORE_MAP_HEX_TO_JSON(data,EID_MAP.CITIZEN_ADDRESS));
