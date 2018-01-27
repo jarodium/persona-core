@@ -10,9 +10,9 @@ const CORE_COUNTRY = 'pt';
 
 function CORE_MAP_HEX_TO_JSON(hex,map) {
   let a = Object.keys(map);
-  a.forEach(function(k,v) {
-    p = v.split(",");
-    map[k] = hex.toString("utf8",p[0],p[1]);
+  a.forEach(function(k) {    
+    p = map[k].split(",");
+    map[k] = hex.toString("utf8",parseInt(p[0]),parseInt(p[1])).replace(/\u0000/g,"");
   });
   return map;
 }
