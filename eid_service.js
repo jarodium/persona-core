@@ -16,8 +16,6 @@ var expressWs = require('express-ws')(app);
 let port = 3001;
 var pcsc = require('./eid_pcsc_reader_monitor');
 
-var CARD_PRESENT = false;
-
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -36,7 +34,6 @@ pcsc.registerReader(
         expressWs.getWss().clients.forEach(function(client) {
             client.send(JSON.stringify({"severity":"success", "summary":"Status", "detail":"Card inserted."}));
         });
-        CARD_PRESENT = true;
     },
     function() {
         //send status of card removed
@@ -44,7 +41,6 @@ pcsc.registerReader(
         expressWs.getWss().clients.forEach(function(client) {
             client.send(JSON.stringify({"severity":"warn", "summary":"Status", "detail":"Card removed."}));
         });
-        CARD_PRESENT = false;
     }
 );
 
@@ -54,7 +50,7 @@ app.ws('/status', function(ws, req) {
 });
 
 app.get('/identity/:PIN_ADDRESS', function(req, res) {
-    if (pcsc.getReader().CARD_PRESENT == true) {        
+    if (pcsc.getReader().card_present == true) {        
         if (req.params.PIN_ADDRESS !== '') {
             pcsc.readIdentity(req.params.PIN_ADDRESS).then(address => {
                 res.send(address);
@@ -70,7 +66,7 @@ app.get('/identity/:PIN_ADDRESS', function(req, res) {
 });
 
 app.get('/address/:PIN_ADDRESS', function(req, res) {
-    if (pcsc.getReader().CARD_PRESENT == true) {        
+    if (pcsc.getReader().card_present == true) {        
         if (req.params.PIN_ADDRESS !== '') {
             pcsc.readAddress(req.params.PIN_ADDRESS).then(address => {
                 res.send(address);
