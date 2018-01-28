@@ -20,10 +20,12 @@ function registerReader(onCardInserted, onCardRemoved) {
 
         r.on('status', function(status) {
             var changes = this.state ^ status.state;
-            if ((changes & this.SCARD_STATE_EMPTY) && (status.state & this.SCARD_STATE_EMPTY)) {                
+            if ((changes & this.SCARD_STATE_EMPTY) && (status.state & this.SCARD_STATE_EMPTY)) {
+                reader["card_present"] = false;
                 reader.disconnect(reader.SCARD_LEAVE_CARD, function(err) {});
                 onCardRemoved();
-            } else if ((changes & this.SCARD_STATE_PRESENT) && (status.state & this.SCARD_STATE_PRESENT)) {            
+            } else if ((changes & this.SCARD_STATE_PRESENT) && (status.state & this.SCARD_STATE_PRESENT)) {
+                reader["card_present"] = true;
                 reader.disconnect(reader.SCARD_LEAVE_CARD, function(err) {});
                 onCardInserted();                
             }
