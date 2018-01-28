@@ -7,6 +7,7 @@
   TODO:
     - Monitor Service
         - Pin failed response
+    - 
 */
 
 var express = require('express');
@@ -15,9 +16,7 @@ var expressWs = require('express-ws')(app);
 let port = 3001;
 var pcsc = require('./eid_pcsc_reader_monitor');
 
-//var Notifier = require('./dependencies/notifier');
-
-//var notifier = new Notifier();
+var CARD_PRESENT = false;
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -31,14 +30,21 @@ app.listen(port, function () {
 
 pcsc.registerReader(
     function() {
+        //send status of card inserted
+            //replace with socket io
+            //trigger ident procedures
         expressWs.getWss().clients.forEach(function(client) {
             client.send(JSON.stringify({"severity":"success", "summary":"Status", "detail":"Card inserted."}));
         });
+        CARD_PRESENT = true;
     },
     function() {
+        //send status of card removed
+            //replace with socket io
         expressWs.getWss().clients.forEach(function(client) {
             client.send(JSON.stringify({"severity":"warn", "summary":"Status", "detail":"Card removed."}));
         });
+        CARD_PRESENT = false;
     }
 );
 
@@ -47,44 +53,26 @@ app.ws('/status', function(ws, req) {
     // Note: All open websockets contained in expressWs.getWss().clients.
 });
 
-app.get('/card', function(req, res) {
-    console.log(pcsc.getReader());
-    if (!pcsc.getReader()) res.send({"severity":"error", "summary":"Error", "detail":"Card reader not connected."});
-    else {
-        // if not reading already, start reading of card:
-        /*if (!notifier.getObservers('card')) {
-            // WINDOWS PLATFORM ONLY, ADD ARTIFICIAL DELAY OF 0.75s
-            /*setTimeout(function() {
-            pcsc.readMaestro().then(tag57 => {
-                notifier.notifyObservers('card', tag57);
+app.get('/identity/:PIN_ADDRESS', function(req, res) {
+    if (pcsc.getReader().CARD_PRESENT == true) {        
+        if (req.params.PIN_ADDRESS !== '') {
+            pcsc.readIdentity(req.params.PIN_ADDRESS).then(address => {
+                res.send(address);
             });
-            // WINDOWS PLATFORM ONLY, ADD ARTIFICIAL DELAY OF 0.75s
-            }, 750);*/
-        /*}*/
-
-        // add observer for card reading result
-       /* notifier.addObserver('card-address', function(address) {
-            console.log("ah");
-            /*if (tag57) {
-                res.send({
-                    routingcode:  tag57.value.substr(3,5),
-                    branch:       tag57.value.substr(5,3),
-                    account:      tag57.value.substr(8,10),
-                    shortaccount: tag57.value.substr(9,7),
-                    subaccount:   tag57.value.substr(16,2),
-                });
-            } else {
-                res.send({});
-            }*/
-       // });
+        }
+        else {
+            res.send({"error" : "no_identity_pin"});
+        }
+    }
+    else {
+        res.send({"error" : "no_card_present"});
     }
 });
 
 app.get('/address/:PIN_ADDRESS', function(req, res) {
-    if (pcsc.getReader().card_present == true) {        
+    if (pcsc.getReader().CARD_PRESENT == true) {        
         if (req.params.PIN_ADDRESS !== '') {
             pcsc.readAddress(req.params.PIN_ADDRESS).then(address => {
-                //notifier.notifyObservers('card-address', address);
                 res.send(address);
             });
         }
@@ -98,7 +86,11 @@ app.get('/address/:PIN_ADDRESS', function(req, res) {
 });
 
 app.get('/status',function(req, res) {
-    res.send(pcsc.getReader());
+    if (!pcsc.getReader()) res.send({"severity":"error", "summary":"Error", "detail":"Card reader not connected."});
+    else {        
+        res.send(pcsc.getReader());
+    }
+    
 })
 
 // --- for testing
