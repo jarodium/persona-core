@@ -12,7 +12,6 @@
 
 var express = require('express');
 var app = express();
-var expressWs = require('express-ws')(app);
 let port = 3001;
 var pcsc = require('./eid_pcsc_reader_monitor');
 
@@ -44,10 +43,6 @@ pcsc.registerReader(
     }
 );
 
-app.ws('/status', function(ws, req) {
-    console.log('Websocket connected.');
-    // Note: All open websockets contained in expressWs.getWss().clients.
-});
 
 app.get('/identity/:PIN_ADDRESS', function(req, res) {
     if (pcsc.getReader().card_present == true) {        
@@ -87,17 +82,7 @@ app.get('/status',function(req, res) {
         res.send(pcsc.getReader());
     }
     
-})
-
-// --- for testing
-
-app.get('/test', function(req, res) {
-    expressWs.getWss().clients.forEach(function(client) {
-        client.send(JSON.stringify({"severity":"warn", "summary":"Status", "detail":"Testing the websocket."}));
-    });
-    res.send('Status sent.');
 });
-
 
 /*metodos
  Criar uma homepage com socket.io fornecido pelo eid-core.js ( porta 103001 )
