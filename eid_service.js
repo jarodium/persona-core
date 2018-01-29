@@ -30,16 +30,16 @@ pcsc.registerReader(
         //send status of card inserted
             //replace with socket io
             //trigger ident procedures
-        expressWs.getWss().clients.forEach(function(client) {
+        /*expressWs.getWss().clients.forEach(function(client) {
             client.send(JSON.stringify({"severity":"success", "summary":"Status", "detail":"Card inserted."}));
-        });
+        });*/
     },
     function() {
         //send status of card removed
             //replace with socket io
-        expressWs.getWss().clients.forEach(function(client) {
+        /*expressWs.getWss().clients.forEach(function(client) {
             client.send(JSON.stringify({"severity":"warn", "summary":"Status", "detail":"Card removed."}));
-        });
+        });*/
     }
 );
 
@@ -52,7 +52,7 @@ app.get('/identity/:PIN_ADDRESS', function(req, res) {
             });
         }
         else {
-            res.send({"error" : "no_identity_pin"});
+            res.send({"error" : "no_identity_pin_given"});
         }
     }
     else {
@@ -68,7 +68,7 @@ app.get('/address/:PIN_ADDRESS', function(req, res) {
             });
         }
         else {
-            res.send({"error" : "no_address_pin"});
+            res.send({"error" : "no_address_pin_given"});
         }
     }
     else {
@@ -77,7 +77,7 @@ app.get('/address/:PIN_ADDRESS', function(req, res) {
 });
 
 app.get('/status',function(req, res) {
-    if (!pcsc.getReader()) res.send({"severity":"error", "summary":"Error", "detail":"Card reader not connected."});
+    if (!pcsc.getReader()) res.send({"error": "no_card_reader"});
     else {        
         res.send(pcsc.getReader());
     }
