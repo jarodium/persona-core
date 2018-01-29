@@ -100,21 +100,16 @@ app.get('/test', function(req, res) {
 
 
 /*metodos
-  validarCheckD
-    -> recebe o numero
-    -> devolve true / false
-  ident -> identificar a pessoa utilizando um número
-    -> recebe um número
-    -> recebe um parametro de leitura
-    -> valida o número
-      -> sim
-        -> verifica o ficheiro de privacidade se pode obter esta informação
-          -> se sim
-            -> saca informação
-          -> se não
-            -> emite um erro FAULT_PRIV_VIOL
-      -> não
-        -> emite um erro EID_ERR_CHECK_DIGIT
-  init -> inicializa um novo cartão e registo no core
-  update -> actualizar o cartão e registo no core
+ Criar uma homepage com socket.io fornecido pelo eid-core.js ( porta 103001 )
+
+Ao inserir o cartão de cidadão
+    - Invocar o método ident
+        - Se o cartão de cidadão não existir deverá ser emitido via socket.io um pedido de registo do user, se quer registá-lo no sistema,
+            - Se sim
+                - A Webpage pede os pins de identidade e morada e pins de certificados
+                    - Iniciar o registo da pessoa no repositório SecPack ( procedimento tem que ser cifrado bem como os dados no secpack têm de ser cifrados )
+            - Se não
+                - Ignora o processo.
+                - Verificar se o cc está actualizado
+            colocar uma pasta chamada www com a seguinte estrutura https://expressjs.com/en/starter/static-files.html
   */
