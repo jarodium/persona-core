@@ -35,3 +35,7 @@ source ~/.profile
 
 
 npm install -g pcsclite
+
+############# Linux Environment ####################
+  ##Setup this line into the final path of core. This is let core-frontend running on port 80
+sudo setcap 'cap_net_bind_service=+ep' `which node`
