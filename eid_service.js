@@ -11,6 +11,8 @@
 */
 
 var express = require('express');
+var axios = require('axios');
+let axeCFG = { timeout: 1000 };
 var app = express();
 let port = 3001;
 var pcsc = require('./eid_pcsc_reader_monitor');
@@ -33,8 +35,26 @@ pcsc.registerReader(
         /*expressWs.getWss().clients.forEach(function(client) {
             client.send(JSON.stringify({"severity":"success", "summary":"Status", "detail":"Card inserted."}));
         });*/
+        axios.post('http://localhost/notify', {
+            firstName: 'Fred',
+            lastName: 'Flintstone'
+        },axeCFG).then(function (response) {
+            //console.log(response.data);
+        })
+        .catch(function (error) {
+            //console.log(error);
+        });  
     },
     function() {
+        axios.post('http://localhost/notify', {
+            firstName: 'Fred',
+            lastName: 'Flintstone'
+        },axeCFG).then(function (response) {
+            //console.log(response.data);
+        })
+        .catch(function (error) {
+            //console.log(error);
+        })
         //send status of card removed
             //replace with socket io
         /*expressWs.getWss().clients.forEach(function(client) {
