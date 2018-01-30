@@ -1,11 +1,11 @@
 {
   apps: [{
-    name: 'privacy_service',
-    script: './privacy_service.js',
+    name: 'frontend-server',
+    script: './core-frontend.js',
     watch: true
   }, {
     name: 'eid_service',
-    script: './ediy_service.js',
+    script: './eid_service.js',
     watch: true
   }]
 }
