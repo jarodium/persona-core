@@ -4,7 +4,7 @@
     - pcsclite
     - shelljs
     - express
-    - express-ws
+    - scp2
 
 2. OpenSc ( https://github.com/OpenSC/OpenSC )
 3. libpcsclite1 libpcsclite-dev pcscd
