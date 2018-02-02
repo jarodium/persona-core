@@ -17,5 +17,9 @@ function CORE_MAP_HEX_TO_JSON(hex,map) {
   return map;
 }
 
+function CORE_CHECK_DATA_FILE($server,$file) {
+  
+}
+
 module.exports.CORE_COUNTRY = CORE_COUNTRY; 
 module.exports.CORE_MAP_HEX_TO_JSON = CORE_MAP_HEX_TO_JSON; 
