@@ -21,16 +21,16 @@ pcsc.on('reader', function(reader) {
         if (changes) {
             if ((changes & this.SCARD_STATE_EMPTY) && (status.state & this.SCARD_STATE_EMPTY)) {
                 console.log("card removed");/* card removed */
-                reader.disconnect(reader.SCARD_LEAVE_CARD, function(err) {
+                /*reader.disconnect(reader.SCARD_LEAVE_CARD, function(err) {
                     if (err) {
                         console.log(err);
                     } else {
                         console.log('Disconnected');
                     }
-                });
+                });*/
             } else if ((changes & this.SCARD_STATE_PRESENT) && (status.state & this.SCARD_STATE_PRESENT)) {
                 console.log("card inserted");/* card inserted */
-                reader.connect({ share_mode : this.SCARD_SHARE_SHARED }, function(err, protocol) {
+                /*reader.connect({ share_mode : this.SCARD_SHARE_SHARED }, function(err, protocol) {
                     if (err) {
                         console.log(err);
                     } else {
@@ -45,7 +45,7 @@ pcsc.on('reader', function(reader) {
                             }
                         });
                     }
-                });
+                });*/
             }
         }
     });
