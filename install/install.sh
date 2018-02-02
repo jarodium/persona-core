@@ -9,6 +9,9 @@ sudo apt-get update
 #preparing automated networking setup
 hostame cr1.localdomain.local #does not work in debian... hell why? must see docs
 
+#somehow add security pack and the other servers into this server host file
+  #schemas/hosts_mapping.txt already has a file, Make it so
+
 #installing dependencies
 apt-get install git-core libpcsclite1 libpcsclite-dev pcscd
 
