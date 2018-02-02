@@ -30,14 +30,9 @@ app.listen(port, function () {
 pcsc.registerReader(
     function() {
         //send status of card inserted
-            //replace with socket io
-            //trigger ident procedures
-        /*expressWs.getWss().clients.forEach(function(client) {
-            client.send(JSON.stringify({"severity":"success", "summary":"Status", "detail":"Card inserted."}));
-        });*/
         axios.post('http://localhost/notify', {
-            firstName: 'Fred',
-            lastName: 'Flintstone'
+            notification: 'eid_service',
+            message: 'CARD_INSERTED'
         },axeCFG).then(function (response) {
             //console.log(response.data);
         })
@@ -47,19 +42,14 @@ pcsc.registerReader(
     },
     function() {
         axios.post('http://localhost/notify', {
-            firstName: 'Fred',
-            lastName: 'Flintstone'
+            notification: 'eid_service',
+            message: 'CARD_REMOVED'
         },axeCFG).then(function (response) {
             //console.log(response.data);
         })
         .catch(function (error) {
             //console.log(error);
         })
-        //send status of card removed
-            //replace with socket io
-        /*expressWs.getWss().clients.forEach(function(client) {
-            client.send(JSON.stringify({"severity":"warn", "summary":"Status", "detail":"Card removed."}));
-        });*/
     }
 );
 
@@ -105,16 +95,17 @@ app.get('/status',function(req, res) {
 });
 
 /*metodos
- Criar uma homepage com socket.io fornecido pelo eid-core.js ( porta 103001 )
-
 Ao inserir o cartão de cidadão
-    - Invocar o método ident
-        - Se o cartão de cidadão não existir deverá ser emitido via socket.io um pedido de registo do user, se quer registá-lo no sistema,
-            - Se sim
-                - A Webpage pede os pins de identidade e morada e pins de certificados
-                    - Iniciar o registo da pessoa no repositório SecPack ( procedimento tem que ser cifrado bem como os dados no secpack têm de ser cifrados )
-            - Se não
-                - Ignora o processo.
-                - Verificar se o cc está actualizado
-            colocar uma pasta chamada www com a seguinte estrutura https://expressjs.com/en/starter/static-files.html
-  */
+    - O web interface pede o PIN da Identificação
+        - Ao receber a Identificação é invocado o método ident com o serialDocumentNumber
+            - O servidor pergunta ao secPack se este serialDocumentNumber existe.
+                - Se existir
+                    - Dá as boas vindas ao utilizador no web interface
+                    - ...
+                - Se não existir
+                    - Perguntar ao Web Interface se quer gravar este cartão no sistema
+                        - Se sim 
+                            - Pede o Pin da Morada
+                            - Cria um registo de Pessoa no SeckPack
+                            - Prepara a directoria de Pessoa no SeckPack
+                            - Informa o utilizador que os dados foram registados
