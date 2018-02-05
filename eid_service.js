@@ -53,6 +53,32 @@ pcsc.registerReader(
     }
 );
 
+app.get('/exists', function(req, res) { 
+    pcsc.checkCard().then(result => {
+        if (result == 0) {
+            axios.post('http://localhost/notify', {
+                notification: 'eid_service',
+                message: 'CARD_NOT_EXISTS'
+            },axeCFG).then(function (response) {
+                //console.log(response.data);
+            })
+            .catch(function (error) {
+                //console.log(error);
+            });      
+        }
+        else {
+            axios.post('http://localhost/notify', {
+                notification: 'eid_service',
+                message: 'CARD_EXISTS'
+            },axeCFG).then(function (response) {
+                //console.log(response.data);
+            })
+            .catch(function (error) {
+                //console.log(error);
+            });
+        }
+    });
+})
 
 app.get('/identity/:PIN_ADDRESS', function(req, res) {
     if (pcsc.getReader().card_present == true) {        
@@ -94,6 +120,8 @@ app.get('/status',function(req, res) {
     
 });
 
+
+
 /*metodos
 Ao inserir o cartão de cidadão
     - O web interface pede o PIN da Identificação
@@ -108,4 +136,4 @@ Ao inserir o cartão de cidadão
                             - Pede o Pin da Morada
                             - Cria um registo de Pessoa no SeckPack
                             - Prepara a directoria de Pessoa no SeckPack
-                            - Informa o utilizador que os dados foram registados
+                            - Informa o utilizador que os dados foram registados*/
