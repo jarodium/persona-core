@@ -65,6 +65,29 @@ function readAddress(pin) {
     });
 }
 
+function registerCard(ident,address) {
+    return new Promise(function(resolve, reject) {
+        shell.exec('pkcs15-tool --list-info > /dev/shm/cc_info.txt', function(code, stdout, stderr) {            
+            fs.readFile('/dev/shm/cc_info.txt', function (err, data) {
+                if (err) reject(err);
+            // var dt = data.split("\n");
+                var nfo = data.toString('utf-8').split("\n");
+                var regex = /(\d+)/g
+                var m = regex.exec(nfo[2]);
+
+                var merged = {
+                    "ident" : ident,
+                    "address" : address
+                }                
+                console.log(merged)                
+                CORE.CORE_WRITE_DATA_FILE("secpack",m[0]+".txt",merged).then(result => {
+                    resolve(result);
+                })
+            })
+        });    
+    })
+}
+
 function checkCard() {
     return new Promise(function(resolve, reject) {
         shell.exec('pkcs15-tool --list-info > /dev/shm/cc_info.txt', function(code, stdout, stderr) {            
@@ -73,10 +96,15 @@ function checkCard() {
             // var dt = data.split("\n");
                 var nfo = data.toString('utf-8').split("\n");
                 var regex = /(\d+)/g
-                var m = regex.exec(nfo[2])            
-                CORE.CORE_CHECK_DATA_FILE("secpack",m[0]+".txt").then(result => {
-                    resolve(result);
-                });                
+                var m = regex.exec(nfo[2]);   
+                if (typeof m[0] == 'null') {
+                    reject("could not read");
+                }
+                else {
+                    CORE.CORE_CHECK_DATA_FILE("secpack",m[0]+".txt").then(result => {
+                        resolve(result);
+                    });
+                }                
             });                    
         });    
     });
@@ -85,5 +113,7 @@ function checkCard() {
 
 module.exports.getReader = getReader;
 module.exports.registerReader = registerReader;
+module.exports.readIdentity = readIdentity;
 module.exports.readAddress = readAddress;
 module.exports.checkCard = checkCard;
+module.exports.registerCard = registerCard;
