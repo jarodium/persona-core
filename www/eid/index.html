@@ -1,8 +1,8 @@
 <div id="eid-pages">
     <!-- pinpad -->
-    <div>
-        <h4>Your card is not registered! Please follow the instructions to register it.</h4>
-        <div id="PINcode">
+    <div id="cardOn" class="hidden">        
+        <div id="PINcode" class="hidden">
+            <h4 class="hidden">Your card is not registered! Please follow the instructions to register it.</h4>
             <h5>Enter your Card's Identification PIN and press 'enter'</h5>
             <h5 class="hidden">Enter your Card's Address PIN and press 'enter'</h5>
             <form action='' method='' name='PINform' id='PINform' data-mode="ID" autocomplete='off' draggable='true'>
@@ -22,7 +22,7 @@
                 <br>
                 <input type='button' class='PINbutton clear' name='-' value='clear' id='-'); />
                 <input type='button' class='PINbutton' name='0' value='0' id='0'  />
-                <input type='button' class='PINbutton enter' name='+' value='enter' id='+' onClick=submitForm(PINbox); />
+                <input type='button' class='PINbutton enter' name='+' value='enter' id='+' />
             </form>
         </div>
     </div>

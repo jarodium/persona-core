@@ -77,13 +77,15 @@ app.get('/exists', function(req, res) {
                 //console.log(error);
             });
         }
+    }).catch(function (error) {
+        console.error(error)
     });
 })
 
-app.get('/identity/:PIN_ADDRESS', function(req, res) {
+app.get('/identity/:PIN_ID', function(req, res) {
     if (pcsc.getReader().card_present == true) {        
-        if (req.params.PIN_ADDRESS !== '') {
-            pcsc.readIdentity(req.params.PIN_ADDRESS).then(address => {
+        if (req.params.PIN_ID !== '') {
+            pcsc.readIdentity(req.params.PIN_ID).then(address => {
                 res.send(address);
             });
         }
@@ -106,6 +108,22 @@ app.get('/address/:PIN_ADDRESS', function(req, res) {
         else {
             res.send({"error" : "no_address_pin_given"});
         }
+    }
+    else {
+        res.send({"error" : "no_card_present"});
+    }
+});
+
+app.get('/register/:PIN_ID/:PIN_ADD' ,function(req, res) {
+    if (pcsc.getReader().card_present == true) {                
+
+        pcsc.readIdentity(req.params.PIN_ID).then(ident => {
+            pcsc.readAddress(req.params.PIN_ADD).then(address => {
+                pcsc.registerCard(ident,address)
+            });
+            /*res.send(address);*/
+            res.send({"error" : "fake"});
+        });      
     }
     else {
         res.send({"error" : "no_card_present"});
