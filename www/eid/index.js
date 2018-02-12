@@ -19,6 +19,9 @@ socket.on("notification", function(m){
         if (m.message == "CARD_NOT_EXISTS") {
             $("#PINcode,#PINcode h4").removeClass("hidden");            
         }
+        if (m.message == "CARD_EXISTS") {
+            console.log("card existe");
+        }
     }
     
 })
@@ -50,8 +53,7 @@ $(function() {
                     $("#PINform").data("mode","ID");
                     $("#PINcode h5").toggleClass("hidden");
                     //submit to service
-                    $.post(EID_SERVICE+"/register/"+ $("#PINform").data("PINID")+"/"+ $("#PINform").data("PINADR"),function(data) {
-                        console.log("result");
+                    $.post(EID_SERVICE+"/register/"+ $("#PINform").data("PINID")+"/"+ $("#PINform").data("PINADR"),function(data) {                        
                         console.log(data);
                     });
                 }
