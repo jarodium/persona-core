@@ -71,11 +71,9 @@ function CORE_WRITE_DATA_FILE(server,file,content) {
   });
 
   return new Promise(function(resolve, reject) {
-    ssh.exec('echo \''+content+'\' >> /home/pedro/securepack/data/'+FILE, {
+    ssh.exec('echo \''+content+'\' >> /home/pedro/securepack/data/'+FILE+" && echo 1", {
         out: function(stdout) {
-          console.log("escrita");
-          console.log(stdout);
-            resolve(stdout);
+          resolve(stdout);
         }      
     }).start();
   });

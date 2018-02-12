@@ -7,7 +7,8 @@
   TODO:
     - Monitor Service
         - Pin failed response
-    - 
+    - Prepare a remote folder in secpack with the cards serial number
+    - Register a person with type_human.json schema and upload it to secpack as type_human.json
 */
 
 var express = require('express');
@@ -114,7 +115,7 @@ app.get('/address/:PIN_ADDRESS', function(req, res) {
     }
 });
 
-app.get('/register/:PIN_ID/:PIN_ADD' ,function(req, res) {
+app.post('/register/:PIN_ID/:PIN_ADD' ,function(req, res) {
     if (pcsc.getReader().card_present == true) {                
 
         pcsc.readIdentity(req.params.PIN_ID).then(ident => {
@@ -139,7 +140,6 @@ app.get('/status',function(req, res) {
 });
 
 
-
 /*metodos
 Ao inserir o cartão de cidadão
     - O web interface pede o PIN da Identificação
@@ -151,7 +151,4 @@ Ao inserir o cartão de cidadão
                 - Se não existir
                     - Perguntar ao Web Interface se quer gravar este cartão no sistema
                         - Se sim 
-                            - Pede o Pin da Morada
-                            - Cria um registo de Pessoa no SeckPack
-                            - Prepara a directoria de Pessoa no SeckPack
                             - Informa o utilizador que os dados foram registados*/
