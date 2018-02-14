@@ -10,7 +10,7 @@
 	    "typeGender" : "570,572",
 	    "nameNacionality" : "572,578",
 	    "dateBirth" : "578,598",
-	    "floatHeight" : "598,606",
+	    "numberHeight" : "598,606",
 	    "numberIdNumber" : "606,624",
 	    "nameSurnameMother" : "624,744",
 	    "nameGivenNameMother" : "744,864",
