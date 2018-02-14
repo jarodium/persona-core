@@ -67,8 +67,8 @@ $(function() {
 
     $.get("eid/index.html", function(data){
         $("body").append(data);
-        $.get(EID_SERVICE+"/exists",function(data) {
+        /*$.get(EID_SERVICE+"/exists",function(data) {
             console.log("exists done");
-        });
+        });*/
     });
 });
