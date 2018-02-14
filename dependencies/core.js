@@ -79,7 +79,34 @@ function CORE_WRITE_DATA_FILE(server,file,content) {
   });
 }
 
+function CORE_WRITE_DATA_FOLDER(server,folder) { 
+  let FILE = folder; 
+  if (server == "secpack") {    
+    var ssh = new SSH({
+      host: CORE_SERVER_ACCESS[0].host,
+      user: CORE_SERVER_ACCESS[0].user,
+      pass: CORE_SERVER_ACCESS[0].pass
+    });
+  }
+
+
+  ssh.on('error', function(err) {
+    console.log('Oops, something went wrong.');
+    console.log(err);
+    ssh.end();
+  });
+
+  return new Promise(function(resolve, reject) {
+    ssh.exec('mkdir /home/pedro/securepack/data/'+folder+" && echo 1", {
+        out: function(stdout) {
+          resolve(stdout);
+        }      
+    }).start();
+  });
+}
+
 module.exports.CORE_COUNTRY = CORE_COUNTRY; 
 module.exports.CORE_MAP_HEX_TO_JSON = CORE_MAP_HEX_TO_JSON; 
 module.exports.CORE_CHECK_DATA_FILE = CORE_CHECK_DATA_FILE;
 module.exports.CORE_WRITE_DATA_FILE = CORE_WRITE_DATA_FILE;
+module.exports.CORE_WRITE_DATA_FOLDER = CORE_WRITE_DATA_FOLDER;
