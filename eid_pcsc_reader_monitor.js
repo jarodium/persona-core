@@ -78,7 +78,7 @@ function checkCard() {
                 }
                 else {
                     EID_SERIAL = m[0];
-                    CORE.CORE_CHECK_DATA_FILE("secpack",m[0]+".txt").then(result => {
+                    CORE.CORE_CHECK_DATA_FILE("secpack",m[0]+"/type_human.json").then(result => {
                         resolve(result);
                     });
                 }                
@@ -113,11 +113,14 @@ function registerCard(ident,address) {
             type_human.obj_physical_traits.text_gender = ident.typeGender;
             type_human.obj_physical_traits.nr_height = ident.nr_height;
             
+            CORE.CORE_WRITE_DATA_FOLDER("secpack",EID_SERIAL).then(result => {
 
-            CORE.CORE_WRITE_DATA_FILE("secpack",EID_SERIAL+".txt",JSON.stringify(type_human)).then(result => {
-                EID_SERIAL = "";
-                resolve(result);
-            })
+                CORE.CORE_WRITE_DATA_FILE("secpack",EID_SERIAL+"/type_human.json",JSON.stringify(type_human)).then(result => {
+                    EID_SERIAL = "";
+                    resolve(result);
+                })
+
+            });
         });
     });
 }
