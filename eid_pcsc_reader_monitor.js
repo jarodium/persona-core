@@ -92,13 +92,15 @@ function registerCard(ident,address) {
         "ident" : ident,
         "address" : address
     }      
+    console.log("registering");
     //pegar no ficheiro type_human json e colocar lá os dados do ident e address    
     return new Promise(function(resolve, reject) {    
         fs.readFile('./schemas/type_human.json', function (err, data) {
             reject(err);
+            console.log("reading file");
             var type_human = JSON.parse(data);
             
-            type_human.human.text_name = ident.nameName+" "+.ident.nameSurname;
+            type_human.human.text_name = ident.nameName+" "+ident.nameSurname;
             type_human.human.text_eid = ident.serialDocumentNumber;
             type_human.human.date_birth = ident.dateBirth.split(" ").reverse().join("-");
 
@@ -110,8 +112,9 @@ function registerCard(ident,address) {
             
             type_human.human.obj_citizen.text_current_address = address;
 
-            type_human.obj_physical_traits.text_gender = ident.typeGender;
-            type_human.obj_physical_traits.nr_height = ident.nr_height;
+            type_human.human.obj_physical_traits.text_gender = ident.typeGender;
+            type_human.human.obj_physical_traits.nr_height = ident.numberHeight;
+            console.log(ident.numberHeight);
             
             CORE.CORE_WRITE_DATA_FOLDER("secpack",EID_SERIAL).then(result => {
 
