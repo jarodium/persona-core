@@ -62,6 +62,7 @@ app.get('/exists', function(req, res) {
                 message: 'CARD_NOT_EXISTS'
             },axeCFG).then(function (response) {
                 //console.log(response.data);
+                res.send({"ok" : "request_done"});
             })
             .catch(function (error) {
                 //console.log(error);
@@ -73,6 +74,7 @@ app.get('/exists', function(req, res) {
                 message: 'CARD_EXISTS'
             },axeCFG).then(function (response) {
                 //console.log(response.data);
+                res.send({"ok" : "request_done"});
             })
             .catch(function (error) {
                 //console.log(error);
@@ -117,13 +119,11 @@ app.get('/address/:PIN_ADDRESS', function(req, res) {
 
 app.post('/register/:PIN_ID/:PIN_ADD' ,function(req, res) {
     if (pcsc.getReader().card_present == true) {                
-
         pcsc.readIdentity(req.params.PIN_ID).then(ident => {
             pcsc.readAddress(req.params.PIN_ADD).then(address => {
                 pcsc.registerCard(ident,address)
-            });
-            /*res.send(address);*/
-            res.send({"error" : "fake"});
+                res.send({"ok" : "request_done"});
+            });                        
         });      
     }
     else {
@@ -136,7 +136,6 @@ app.get('/status',function(req, res) {
     else {        
         res.send(pcsc.getReader());
     }
-    
 });
 
 
@@ -149,6 +148,6 @@ Ao inserir o cartão de cidadão
                     - Dá as boas vindas ao utilizador no web interface
                     - ...
                 - Se não existir
-                    - Perguntar ao Web Interface se quer gravar este cartão no sistema
-                        - Se sim 
-                            - Informa o utilizador que os dados foram registados*/
+                    - Dá as boas vindas ao utilizador no web interface
+
+    - No web interface fazer o reset do formulário de pin
