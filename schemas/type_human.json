@@ -6,8 +6,7 @@
         "obj_citizen": {
             "file_birth_certificate": {
                 "mime": "",
-                "base64": "",
-                "stored_at": ""
+                "base64": ""
             },
             "nr_idcard": "",
             "nr_vat": "",
@@ -20,8 +19,7 @@
             "obj_dna": {
                 "file_sequenced_dna": {
                     "mime": "",
-                    "base64": "",
-                    "stored_at": ""
+                    "base64": ""
                 }
             },
             "obj_blood": {
@@ -65,7 +63,7 @@
                     "obj_ears": {
                         "text_type": ""
                     },
-                    "obj_teeh": {
+                    "obj_teeth": {
                         "nr_current_number": "",
                         "nr_wisdom": "",
                         "nr_primary": "",
@@ -73,8 +71,7 @@
                             "obj_file": {
                                 "description": "",
                                 "mime": "",
-                                "base64": "",
-                                "stored_at": ""
+                                "base64": ""
                             }
                         }]
                     },
